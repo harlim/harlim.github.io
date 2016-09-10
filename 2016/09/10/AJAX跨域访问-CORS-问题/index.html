@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>num1 | harlim&#39;s blog</title>
+  <title>AJAX跨域访问(CORS)问题 | harlim&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="num1">
-<meta property="og:url" content="http://yoursite.com/temp/index.html">
+  <meta name="description" content="注：如果想直接看解决方案，可以直接看最后的问题解决部分。这段是主页君一路查问题追杀过来的心路历程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX跨域访问(CORS)问题">
+<meta property="og:url" content="http://yoursite.com/2016/09/10/AJAX跨域访问-CORS-问题/index.html">
 <meta property="og:site_name" content="harlim's blog">
-<meta property="og:description">
-<meta property="og:updated_time" content="2015-08-23T14:43:04.000Z">
+<meta property="og:description" content="注：如果想直接看解决方案，可以直接看最后的问题解决部分。这段是主页君一路查问题追杀过来的心路历程。">
+<meta property="og:image" content="http://yoursite.com/images/AJAX跨域访问-CORS-问题/CORS浏览器支持情况.png">
+<meta property="og:updated_time" content="2016-09-10T03:35:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="num1">
-<meta name="twitter:description">
+<meta name="twitter:title" content="AJAX跨域访问(CORS)问题">
+<meta name="twitter:description" content="注：如果想直接看解决方案，可以直接看最后的问题解决部分。这段是主页君一路查问题追杀过来的心路历程。">
   
     <link rel="alternative" href="/atom.xml" title="harlim&#39;s blog" type="application/atom+xml">
   
@@ -177,11 +178,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-AJAX跨域访问-CORS-问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/temp/index.html" class="article-date">
-  	<time datetime="2015-08-23T14:43:04.000Z" itemprop="datePublished">2015-08-23</time>
+      <a href="/2016/09/10/AJAX跨域访问-CORS-问题/" class="article-date">
+  	<time datetime="2016-09-10T02:52:48.000Z" itemprop="datePublished">2016-09-10</time>
 </a>
     </div>
   
@@ -194,7 +195,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      num1
+      AJAX跨域访问(CORS)问题
     </h1>
   
 
@@ -202,6 +203,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AJAX/">AJAX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -210,13 +215,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>注：如果想直接看解决方案，可以直接看最后的问题解决部分。这段是主页君一路查问题追杀过来的心路历程。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="一、问题产生">一、问题产生</h2><p>项目里的app用了混合开发，JS和Native页面交互（这专题在下一篇章再总(chao)结(xi)出来）。原先iOS里用的是UIWebView，但由于性能差，表现反而不如Android机器(Android里的浏览器内核都是WKWebView)，所以打算也换成WKWebView。但UIWebView与JS交互的方法 和WKWebView不一样，服务端的JS代码也要改。</p>
+<p>用</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -r -<span class="tag">p</span> -np -k www<span class="class">.abc</span><span class="class">.com</span></span><br></pre></td></tr></table></figure>
+<p>来抓取整个网页到本地服务器，打开网页在chrome的控制台看到有个错误，如下：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No 'Access-Control-Allow-Origin' header <span class="keyword">is</span> present <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> requested resource.</span><br></pre></td></tr></table></figure>
+<p>联想到以前同事提过的跨域问题，隐约觉得是同一个问题。经查，有以下解决方案。</p>
+<h2 id="二、问题解决">二、问题解决</h2><p>解决问题有2要素，浏览器和服务器都要支持。</p>
+<h4 id="1、浏览器支持情况：">1、浏览器支持情况：</h4><p><img src="/images/AJAX跨域访问-CORS-问题/CORS浏览器支持情况.png" alt=""></p>
+<h4 id="2、服务器设置：">2、服务器设置：</h4><p>由于我也不懂服务器配置，所以，扔个链接给你，你自己体会。<br><a href="http://enable-cors.org/server.html" target="_blank" rel="external">http://enable-cors.org/server.html</a></p>
+<h2 id="三、后记备注：">三、后记备注：</h2><p>大家在测试时服务器的链接可以用这个，<br><a href="https://fonts.googleapis.com/css?family=Inconsolata&amp;text=Hello" target="_blank" rel="external">https://fonts.googleapis.com/css?family=Inconsolata&amp;text=Hello</a><br>这网站是开启CORS的。</p>
+<h4 id="references:">references:</h4><p><a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank" rel="external">https://en.wikipedia.org/wiki/Cross-origin_resource_sharing</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</a><br><a href="http://enable-cors.org/index.html" target="_blank" rel="external">http://enable-cors.org/index.html</a></p>
+
       
     </div>
     
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/24/公司的网络组建杂谈/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">公司的网络组建杂谈</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -240,7 +270,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="undefined" data-title="num1" data-url="http://yoursite.com/temp/index.html"></div>
+	<div class="ds-thread" data-thread-key="AJAX跨域访问-CORS-问题" data-title="AJAX跨域访问(CORS)问题" data-url="http://yoursite.com/2016/09/10/AJAX跨域访问-CORS-问题/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -284,7 +314,7 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
