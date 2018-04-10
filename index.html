@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AJAX/" style="font-size: 10px;">AJAX</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+						<a href="/tags/AJAX/" style="font-size: 10px;">AJAX</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
 					</div>
 				</section>
 				
@@ -177,6 +177,74 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-恢复git记录的王牌组合命令" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/11/恢复git记录的王牌组合命令/" class="article-date">
+  	<time datetime="2018-04-10T16:25:34.000Z" itemprop="datePublished">2018-04-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/11/恢复git记录的王牌组合命令/">恢复git记录的王牌组合命令</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在本地添加了多个远程仓库后，有时会出现本地分支Track（追踪） 不了对应的远程分支的情况（可能是 source 的 bug）。</p>
+<blockquote>
+<p>举个例子<br>本地有 A,B两个分支，在 source 切到 B 分支后，pull 远程最新 commit 下来,由于 source 上没及时的把远程的 B 分支显示出来，误操作 pull 了远程的 A 分支下来，也没提示警告或错误，然后在B 分支提交了几个 commit，并且切到 A 分支，把 B 分支merge 后，才意识到有问题。当时心里想，小事一桩，用 git reflog 和 git reset 就足够了。</p>
+</blockquote>
+<p>看下事故现场 git reflog 记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. 8f17e95 HEAD@&#123;28&#125;: <span class="operator"><span class="keyword">commit</span> (<span class="keyword">merge</span>): <span class="keyword">Merge</span> branch <span class="string">'dev'</span> <span class="keyword">into</span> wxl/dev_3<span class="number">.6</span><span class="number">.0</span></span><br><span class="line"><span class="number">2.</span> f5c2290 <span class="keyword">HEAD</span>@&#123;<span class="number">29</span>&#125;: checkout: moving <span class="keyword">from</span> dev <span class="keyword">to</span> wxl/dev_3<span class="number">.6</span><span class="number">.0</span></span><br><span class="line"><span class="number">3.</span> b5d537e <span class="keyword">HEAD</span>@&#123;<span class="number">30</span>&#125;: <span class="keyword">reset</span>: moving <span class="keyword">to</span> b5d537e</span><br><span class="line"><span class="number">4.</span> <span class="number">189e4</span>d3 <span class="keyword">HEAD</span>@&#123;<span class="number">31</span>&#125;: <span class="keyword">commit</span> (<span class="keyword">merge</span>): <span class="keyword">Merge</span> branch <span class="string">'wxl/dev_3.6.0'</span> <span class="keyword">into</span> dev</span><br><span class="line"><span class="number">5.</span> b5d537e <span class="keyword">HEAD</span>@&#123;<span class="number">32</span>&#125;: pull origin_newchic dev: <span class="keyword">Fast</span>-forward</span><br><span class="line"><span class="number">6.</span> e12032b (wxl/dev_3<span class="number">.6</span><span class="number">.0</span>) <span class="keyword">HEAD</span>@&#123;<span class="number">33</span>&#125;: checkout: moving <span class="keyword">from</span> wxl/dev_3<span class="number">.6</span><span class="number">.0</span> <span class="keyword">to</span> dev</span><br><span class="line"><span class="number">7.</span> f5c2290 <span class="keyword">HEAD</span>@&#123;<span class="number">34</span>&#125;: <span class="keyword">commit</span>: freegift rtl 翻转</span><br><span class="line"><span class="number">8.</span> <span class="number">5</span>fb503d <span class="keyword">HEAD</span>@&#123;<span class="number">35</span>&#125;: checkout: moving <span class="keyword">from</span> wxl/feature_3<span class="number">.7</span><span class="number">.0</span>_cate <span class="keyword">to</span> wxl/dev_3<span class="number">.6</span><span class="number">.0</span></span><br><span class="line"><span class="number">9.</span> <span class="number">60</span>f37b2 (origin_newchic/wxl/feature_3<span class="number">.7</span><span class="number">.0</span>_cate, origin/wxl/feature_3<span class="number">.7</span><span class="number">.0</span>_cate, wxl/feature_3<span class="number">.7</span><span class="number">.0</span>_cate) <span class="keyword">HEAD</span>@&#123;<span class="number">36</span>&#125;: checkout: moving <span class="keyword">from</span> wxl/feature_cate <span class="keyword">to</span> wxl/feature_3<span class="number">.7</span><span class="number">.0</span>_cate</span><br><span class="line"><span class="number">10.</span> <span class="number">585e703</span> (origin_newchic/wxl/feature_cate, origin/wxl/feature_cate, wxl/feature_cate) <span class="keyword">HEAD</span>@&#123;<span class="number">37</span>&#125;: checkout: moving <span class="keyword">from</span> wxl/dev_3<span class="number">.6</span><span class="number">.0</span> <span class="keyword">to</span> wxl/feature_cate</span><br><span class="line"><span class="number">11.</span> <span class="number">5</span>fb503d <span class="keyword">HEAD</span>@&#123;<span class="number">38</span>&#125;: <span class="keyword">commit</span> (amend): adword 小改,秒杀添加统计</span><br><span class="line"><span class="number">12.</span> <span class="number">69078</span>ac <span class="keyword">HEAD</span>@&#123;<span class="number">39</span>&#125;: <span class="keyword">commit</span>: adword 小改</span><br><span class="line"><span class="number">13.</span> <span class="number">514</span>a570 <span class="keyword">HEAD</span>@&#123;<span class="number">40</span>&#125;: <span class="keyword">commit</span>: 支付成功，统计修正入口位置</span><br><span class="line"><span class="number">14.</span> f608d5b (origin_newchic/wxl/dev_3<span class="number">.6</span><span class="number">.0</span>, wxl/dev_3<span class="number">.5</span><span class="number">.3</span>) <span class="keyword">HEAD</span>@&#123;<span class="number">41</span>&#125;: checkout: moving <span class="keyword">from</span> dev <span class="keyword">to</span> wxl/dev_3<span class="number">.6</span><span class="number">.0</span></span><br><span class="line"><span class="number">15.</span> e12032b (wxl/dev_3<span class="number">.6</span><span class="number">.0</span>) <span class="keyword">HEAD</span>@&#123;<span class="number">42</span>&#125;: pull origin_newchic dev: <span class="keyword">Fast</span>-forward</span><br><span class="line"><span class="number">16.</span> <span class="number">5</span>c36b13 (origin/dev) <span class="keyword">HEAD</span>@&#123;<span class="number">43</span>&#125;: checkout: moving <span class="keyword">from</span> wxl/dev_3<span class="number">.6</span><span class="number">.0</span> <span class="keyword">to</span> dev</span></span><br></pre></td></tr></table></figure>
+<p>在第15行记录可以看到，错误地 pull 了其它分支，期间 commit 了几次，在第1行记录还可以看出，把其它分支 merge 了过来。</p>
+<p>后面用 git reset –hard f5c2290 来回退几个操作的时候，虽然命令显示已经退回到那个点，但 wxl/dev_3.6.0 整个分支的内容都不见了，这就触及我的知识盲区了。先 Mark，以后碰到类似的情况再研究。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> f5c2290 HEAD@&#123;<span class="number">27</span>&#125;: reset: moving to f5c2290</span><br></pre></td></tr></table></figure>
+<p>还好，wxl/dev_3.6.0 分支的内容不多，赶紧新建个 recover 分支，用 git reflog 显示记录后，再用 git cherry-pick 一个一个地 pick 过来。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> f1d674e HEAD@&#123;<span class="number">15</span>&#125;: cherry-pick: freegift rtl 翻转</span><br><span class="line"><span class="number">2.</span> fded62a HEAD@&#123;<span class="number">16</span>&#125;: cherry-pick: adword 小改,秒杀添加统计</span><br><span class="line"><span class="number">3.</span> f1254ff HEAD@&#123;<span class="number">17</span>&#125;: cherry-pick: adword 小改</span><br><span class="line"><span class="number">4.</span> <span class="number">485</span>d054 HEAD@&#123;<span class="number">18</span>&#125;: cherry-pick: 支付成功，统计修正入口位置</span><br><span class="line"><span class="number">5.</span> f608d5b (origin_newchic/wxl/dev_3<span class="number">.6</span><span class="number">.0</span>, wxl/dev_3<span class="number">.5</span><span class="number">.3</span>) HEAD@&#123;<span class="number">19</span>&#125;: checkout: moving from wxl/dev_3<span class="number">.5</span><span class="number">.3</span> to wxl/dev_recover</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>总结：<br>遇到分支或 commit 丢失的情况，先用 git reflog 显示 commit 的记录，再用 git cherry-pick xxxxxxx 来合并丢失的内容。这对组合命令几乎可以应对任何情况，但修改了内容而没有 commit 起来的我也没办法了。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-利用反射（Reflection）来高效初始化Model的值" class="article article-type-post" itemscope itemprop="blogPost">
   
