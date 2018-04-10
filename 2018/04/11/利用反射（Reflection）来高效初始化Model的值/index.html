@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>harlim&#39;s blog</title>
+  <title>利用反射（Reflection）来高效初始化Model的值 | harlim&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="harlim's blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Json 转 Model 后，接下来要做的事情
+
+Json转model已是很常见的事情，优秀的第三方库也很多，如YYModel等本文以YYModel为例，在它的基础上，扩展成一个在项目中使用的Model基类。Model基类内置了开关，可对一些常见的对象类型的实例初始化为“空值”(例如，NSString类型赋值为@””,NSArray类型赋值为@[])，这样的做法有2优点：1、方便，省去了在项目中判">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用反射（Reflection）来高效初始化Model的值">
+<meta property="og:url" content="http://yoursite.com/2018/04/11/利用反射（Reflection）来高效初始化Model的值/index.html">
 <meta property="og:site_name" content="harlim's blog">
-<meta property="og:description">
+<meta property="og:description" content="Json 转 Model 后，接下来要做的事情
+
+Json转model已是很常见的事情，优秀的第三方库也很多，如YYModel等本文以YYModel为例，在它的基础上，扩展成一个在项目中使用的Model基类。Model基类内置了开关，可对一些常见的对象类型的实例初始化为“空值”(例如，NSString类型赋值为@””,NSArray类型赋值为@[])，这样的做法有2优点：1、方便，省去了在项目中判">
+<meta property="og:updated_time" content="2018-04-10T16:14:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="harlim's blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="利用反射（Reflection）来高效初始化Model的值">
+<meta name="twitter:description" content="Json 转 Model 后，接下来要做的事情
+
+Json转model已是很常见的事情，优秀的第三方库也很多，如YYModel等本文以YYModel为例，在它的基础上，扩展成一个在项目中使用的Model基类。Model基类内置了开关，可对一些常见的对象类型的实例初始化为“空值”(例如，NSString类型赋值为@””,NSArray类型赋值为@[])，这样的做法有2优点：1、方便，省去了在项目中判">
   
     <link rel="alternative" href="/atom.xml" title="harlim&#39;s blog" type="application/atom+xml">
   
@@ -176,9 +183,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-利用反射（Reflection）来高效初始化Model的值" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-利用反射（Reflection）来高效初始化Model的值" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2018/04/11/利用反射（Reflection）来高效初始化Model的值/" class="article-date">
@@ -194,12 +199,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/利用反射（Reflection）来高效初始化Model的值/">利用反射（Reflection）来高效初始化Model的值</a>
+    <h1 class="article-title" itemprop="name">
+      利用反射（Reflection）来高效初始化Model的值
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -223,316 +239,62 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/13/addChildViewController-的正确用法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">addChildViewController:的正确用法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
-
-
-
-
-  
-    <article id="post-addChildViewController-的正确用法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/13/addChildViewController-的正确用法/" class="article-date">
-  	<time datetime="2016-09-13T11:33:06.000Z" itemprop="datePublished">2016-09-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/13/addChildViewController-的正确用法/">addChildViewController:的正确用法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>现在有ParentVC,OneVC,TwoVC三个controller，想在ParentVC上加载OneVC和TwoVC。<br>1、如果sub VC还没在父VC上加载过的，则先加载到父VC上，如下</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self </span><span class="keyword">addChildViewController:content];</span><br><span class="line"></span><span class="label">content.view.frame</span> = [<span class="keyword">self </span>frameForContentController]<span class="comment">;</span></span><br><span class="line">[<span class="keyword">self.view </span><span class="keyword">addSubview:self.currentClientView];</span><br><span class="line"></span>[content didMoveToParentViewController:<span class="keyword">self];</span></span><br></pre></td></tr></table></figure>
-<p>2、如果已经加载到父VC上，则</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)cycleFromViewController: (<span class="built_in">UIViewController</span>*) oldVC</span><br><span class="line">               toViewController: (<span class="built_in">UIViewController</span>*) newVC &#123;</span><br><span class="line">   <span class="comment">// Prepare the two view controllers for the change.</span></span><br><span class="line">   [oldVC willMoveToParentViewController:<span class="literal">nil</span>];</span><br><span class="line">   [<span class="keyword">self</span> addChildViewController:newVC];</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Get the start frame of the new view controller and the end frame</span></span><br><span class="line">   <span class="comment">// for the old view controller. Both rectangles are offscreen.</span></span><br><span class="line">   newVC<span class="variable">.view</span><span class="variable">.frame</span> = [<span class="keyword">self</span> newViewStartFrame];</span><br><span class="line">   <span class="built_in">CGRect</span> endFrame = [<span class="keyword">self</span> oldViewEndFrame];</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Queue up the transition animation.</span></span><br><span class="line">   [<span class="keyword">self</span> transitionFromViewController: oldVC toViewController: newVC</span><br><span class="line">        duration: <span class="number">0.25</span> options:<span class="number">0</span></span><br><span class="line">        animations:^&#123;</span><br><span class="line">            <span class="comment">// Animate the views to their final positions.</span></span><br><span class="line">            newVC<span class="variable">.view</span><span class="variable">.frame</span> = oldVC<span class="variable">.view</span><span class="variable">.frame</span>;</span><br><span class="line">            oldVC<span class="variable">.view</span><span class="variable">.frame</span> = endFrame;</span><br><span class="line">        &#125;</span><br><span class="line">        completion:^(<span class="built_in">BOOL</span> finished) &#123;</span><br><span class="line">           <span class="comment">// Remove the old view controller and send the final</span></span><br><span class="line">           <span class="comment">// notification to the new view controller.</span></span><br><span class="line">           [oldVC removeFromParentViewController];</span><br><span class="line">           [newVC didMoveToParentViewController:<span class="keyword">self</span>];</span><br><span class="line">        &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>references:<a href="https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html" target="_blank" rel="external">https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="利用反射（Reflection）来高效初始化Model的值" data-title="利用反射（Reflection）来高效初始化Model的值" data-url="http://yoursite.com/2018/04/11/利用反射（Reflection）来高效初始化Model的值/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"harlimgithubpages"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-
-
-  
-    <article id="post-JavaScript与iOS原生页面交互" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/13/JavaScript与iOS原生页面交互/" class="article-date">
-  	<time datetime="2016-09-13T11:29:12.000Z" itemprop="datePublished">2016-09-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/13/JavaScript与iOS原生页面交互/">JavaScript与iOS原生页面交互</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-AJAX跨域访问-CORS-问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/10/AJAX跨域访问-CORS-问题/" class="article-date">
-  	<time datetime="2016-09-10T02:52:48.000Z" itemprop="datePublished">2016-09-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/10/AJAX跨域访问-CORS-问题/">AJAX跨域访问(CORS)问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>注：如果想直接看解决方案，可以直接看最后的问题解决部分。这段是主页君一路查问题追杀过来的心路历程。</p>
-</blockquote>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AJAX/">AJAX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/09/10/AJAX跨域访问-CORS-问题/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-公司的网络组建杂谈" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/24/公司的网络组建杂谈/" class="article-date">
-  	<time datetime="2015-08-24T07:50:26.000Z" itemprop="datePublished">2015-08-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/24/公司的网络组建杂谈/">公司的网络组建杂谈</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原来公司少人的时候，用个家用的tp-link路由器就可以了。后来人数多了（35人上下），总的终端数达到70个左右，无线终端占9成，网络有时就会断网，甚至有人的笔记本连不进wifi。刚开始不知道原因，折腾了好久，后来才知道这些路由器都有带机量一说（tp-link官网也只有少数的企业路由标出带机量）。
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/24/公司的网络组建杂谈/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-生命在于折腾" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/23/生命在于折腾/" class="article-date">
-  	<time datetime="2015-08-23T15:30:21.000Z" itemprop="datePublished">2015-08-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/23/生命在于折腾/">生命在于折腾</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>折腾了几天的GitHub Pages + Hexo 合成的博客终于修成正果。其中Hexo安装过程真是一堆坑，官网也不说清楚，只能边抹眼泪边查解决方法T_T，顺道换了个好看的主题，看起来心情也会好一些。以后会不定时地上来更新东西，这个博客应该会坚持下去的。 (ง •̀_•́)ง</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/23/生命在于折腾/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -556,8 +318,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

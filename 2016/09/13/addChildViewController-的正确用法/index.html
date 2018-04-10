@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>生命在于折腾 | harlim&#39;s blog</title>
+  <title>addChildViewController:的正确用法 | harlim&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="折腾了几天的GitHub Pages + Hexo 合成的博客终于修成正果。其中Hexo安装过程真是一堆坑，官网也不说清楚，只能边抹眼泪边查解决方法T_T，顺道换了个好看的主题，看起来心情也会好一些。以后会不定时地上来更新东西，这个博客应该会坚持下去的。 (ง •̀_•́)ง">
+  <meta name="description" content="现在有ParentVC,OneVC,TwoVC三个controller，想在ParentVC上加载OneVC和TwoVC。1、如果sub VC还没在父VC上加载过的，则先加载到父VC上，如下
+1234[self addChildViewController:content];content.view.frame = [self frameForContentController];[self.vi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="生命在于折腾">
-<meta property="og:url" content="http://yoursite.com/2015/08/23/生命在于折腾/index.html">
+<meta property="og:title" content="addChildViewController:的正确用法">
+<meta property="og:url" content="http://yoursite.com/2016/09/13/addChildViewController-的正确用法/index.html">
 <meta property="og:site_name" content="harlim's blog">
-<meta property="og:description" content="折腾了几天的GitHub Pages + Hexo 合成的博客终于修成正果。其中Hexo安装过程真是一堆坑，官网也不说清楚，只能边抹眼泪边查解决方法T_T，顺道换了个好看的主题，看起来心情也会好一些。以后会不定时地上来更新东西，这个博客应该会坚持下去的。 (ง •̀_•́)ง">
-<meta property="og:updated_time" content="2015-08-24T05:25:37.000Z">
+<meta property="og:description" content="现在有ParentVC,OneVC,TwoVC三个controller，想在ParentVC上加载OneVC和TwoVC。1、如果sub VC还没在父VC上加载过的，则先加载到父VC上，如下
+1234[self addChildViewController:content];content.view.frame = [self frameForContentController];[self.vi">
+<meta property="og:updated_time" content="2016-09-13T13:40:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="生命在于折腾">
-<meta name="twitter:description" content="折腾了几天的GitHub Pages + Hexo 合成的博客终于修成正果。其中Hexo安装过程真是一堆坑，官网也不说清楚，只能边抹眼泪边查解决方法T_T，顺道换了个好看的主题，看起来心情也会好一些。以后会不定时地上来更新东西，这个博客应该会坚持下去的。 (ง •̀_•́)ง">
+<meta name="twitter:title" content="addChildViewController:的正确用法">
+<meta name="twitter:description" content="现在有ParentVC,OneVC,TwoVC三个controller，想在ParentVC上加载OneVC和TwoVC。1、如果sub VC还没在父VC上加载过的，则先加载到父VC上，如下
+1234[self addChildViewController:content];content.view.frame = [self frameForContentController];[self.vi">
   
     <link rel="alternative" href="/atom.xml" title="harlim&#39;s blog" type="application/atom+xml">
   
@@ -177,11 +180,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-生命在于折腾" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-addChildViewController-的正确用法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/23/生命在于折腾/" class="article-date">
-  	<time datetime="2015-08-23T15:30:21.000Z" itemprop="datePublished">2015-08-23</time>
+      <a href="/2016/09/13/addChildViewController-的正确用法/" class="article-date">
+  	<time datetime="2016-09-13T11:33:06.000Z" itemprop="datePublished">2016-09-13</time>
 </a>
     </div>
   
@@ -194,7 +197,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      生命在于折腾
+      addChildViewController:的正确用法
     </h1>
   
 
@@ -203,7 +206,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 	</div>
 
         
@@ -214,10 +217,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>折腾了几天的GitHub Pages + Hexo 合成的博客终于修成正果。其中Hexo安装过程真是一堆坑，官网也不说清楚，只能边抹眼泪边查解决方法T_T，顺道换了个好看的主题，看起来心情也会好一些。以后会不定时地上来更新东西，这个博客应该会坚持下去的。 (ง •̀_•́)ง</p>
-<a id="more"></a>
-<h2 id="example">example</h2><h3 id="以下是代码样式">以下是代码样式</h3><pre><code class="bash">$ <span class="built_in">echo</span> <span class="string">"hello world"</span>
-</code></pre>
+        <p>现在有ParentVC,OneVC,TwoVC三个controller，想在ParentVC上加载OneVC和TwoVC。<br>1、如果sub VC还没在父VC上加载过的，则先加载到父VC上，如下</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self </span><span class="keyword">addChildViewController:content];</span><br><span class="line"></span><span class="label">content.view.frame</span> = [<span class="keyword">self </span>frameForContentController]<span class="comment">;</span></span><br><span class="line">[<span class="keyword">self.view </span><span class="keyword">addSubview:self.currentClientView];</span><br><span class="line"></span>[content didMoveToParentViewController:<span class="keyword">self];</span></span><br></pre></td></tr></table></figure>
+<p>2、如果已经加载到父VC上，则</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)cycleFromViewController: (<span class="built_in">UIViewController</span>*) oldVC</span><br><span class="line">               toViewController: (<span class="built_in">UIViewController</span>*) newVC &#123;</span><br><span class="line">   <span class="comment">// Prepare the two view controllers for the change.</span></span><br><span class="line">   [oldVC willMoveToParentViewController:<span class="literal">nil</span>];</span><br><span class="line">   [<span class="keyword">self</span> addChildViewController:newVC];</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Get the start frame of the new view controller and the end frame</span></span><br><span class="line">   <span class="comment">// for the old view controller. Both rectangles are offscreen.</span></span><br><span class="line">   newVC<span class="variable">.view</span><span class="variable">.frame</span> = [<span class="keyword">self</span> newViewStartFrame];</span><br><span class="line">   <span class="built_in">CGRect</span> endFrame = [<span class="keyword">self</span> oldViewEndFrame];</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Queue up the transition animation.</span></span><br><span class="line">   [<span class="keyword">self</span> transitionFromViewController: oldVC toViewController: newVC</span><br><span class="line">        duration: <span class="number">0.25</span> options:<span class="number">0</span></span><br><span class="line">        animations:^&#123;</span><br><span class="line">            <span class="comment">// Animate the views to their final positions.</span></span><br><span class="line">            newVC<span class="variable">.view</span><span class="variable">.frame</span> = oldVC<span class="variable">.view</span><span class="variable">.frame</span>;</span><br><span class="line">            oldVC<span class="variable">.view</span><span class="variable">.frame</span> = endFrame;</span><br><span class="line">        &#125;</span><br><span class="line">        completion:^(<span class="built_in">BOOL</span> finished) &#123;</span><br><span class="line">           <span class="comment">// Remove the old view controller and send the final</span></span><br><span class="line">           <span class="comment">// notification to the new view controller.</span></span><br><span class="line">           [oldVC removeFromParentViewController];</span><br><span class="line">           [newVC didMoveToParentViewController:<span class="keyword">self</span>];</span><br><span class="line">        &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>references:<a href="https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html" target="_blank" rel="external">https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html</a></p>
 
       
     </div>
@@ -227,15 +231,20 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/24/公司的网络组建杂谈/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/04/11/利用反射（Reflection）来高效初始化Model的值/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          公司的网络组建杂谈
+          利用反射（Reflection）来高效初始化Model的值
         
       </div>
     </a>
   
+  
+    <a href="/2016/09/13/JavaScript与iOS原生页面交互/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript与iOS原生页面交互</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -262,7 +271,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="生命在于折腾" data-title="生命在于折腾" data-url="http://yoursite.com/2015/08/23/生命在于折腾/"></div>
+	<div class="ds-thread" data-thread-key="addChildViewController-的正确用法" data-title="addChildViewController:的正确用法" data-url="http://yoursite.com/2016/09/13/addChildViewController-的正确用法/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
